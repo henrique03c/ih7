@@ -1,0 +1,285 @@
+/* =========================================================
+   ih7.in — estilos base (Bootstrap-friendly)
+   =======================================================*/
+
+:root {
+  --ih7-radius: 16px;
+  --ih7-radius-lg: 20px;
+
+  --ih7-kite-bg: #0ea5e9;
+  --ih7-kite-fg: #ffffff;
+
+  --ih7-hero-grad-1: 210 100% 50%;
+  --ih7-hero-grad-2: 254 85% 62%;
+  --ih7-hero-grad-3: 192 94% 43%;
+
+  /* Botões com alto contraste (base) */
+  --ih7-contrast-fg: #ffffff;
+  --ih7-contrast-bg: #2563eb;     /* azul intenso */
+  --ih7-contrast-bg-hover: #1d4ed8;
+  --ih7-contrast-shadow: rgba(2, 6, 23, 0.2);
+
+  /* Outline-contrast (varia por tema) */
+  --ih7-outline-fg: #2563eb;
+  --ih7-outline-border: #2563eb;
+  --ih7-outline-hover-bg: rgba(37, 99, 235, 0.08);
+}
+
+/* Tema claro */
+:root[data-bs-theme="light"] {
+  --bs-body-bg: #f8fafc;
+  --bs-body-color: #0f172a;
+  --bs-border-color: #e2e8f0;
+
+  --ih7-outline-fg: #1e40af;            /* mais escuro p/ contraste */
+  --ih7-outline-border: #1e40af;
+  --ih7-outline-hover-bg: rgba(30, 64, 175, 0.10);
+}
+
+/* Tema escuro */
+:root[data-bs-theme="dark"] {
+  --bs-body-bg: #0b1220;
+  --bs-body-color: #e2e8f0;
+  --bs-border-color: #1e293b;
+
+  --ih7-outline-fg: #93c5fd;            /* claro p/ escuro */
+  --ih7-outline-border: #60a5fa;
+  --ih7-outline-hover-bg: rgba(147, 197, 253, 0.12);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+a { text-underline-offset: 2px; }
+
+/* Foco acessível */
+:where(a, button, [role="button"], .btn, .card, .form-control):focus-visible {
+  outline: 2px solid var(--ih7-contrast-bg);
+  outline-offset: 2px;
+  border-radius: calc(var(--ih7-radius) / 2);
+}
+
+/* Redução de movimento */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+
+/* Marca */
+.brand-kite {
+  display: inline-grid;
+  place-items: center;
+  min-width: 42px; height: 42px;
+  color: var(--ih7-kite-fg);
+  background: linear-gradient(
+    135deg,
+    hsl(var(--ih7-hero-grad-1) / 0.95) 0%,
+    hsl(var(--ih7-hero-grad-2) / 0.95) 50%,
+    hsl(var(--ih7-hero-grad-3) / 0.95) 100%
+  );
+  border-radius: 10px;
+  letter-spacing: .5px;
+  font-weight: 800;
+  text-transform: lowercase;
+}
+a.navbar-brand:hover .brand-kite { filter: brightness(1.05); }
+
+/* Hero */
+.grad-hero {
+  background:
+    radial-gradient(80% 100% at 10% 10%, hsl(var(--ih7-hero-grad-3) / 0.15), transparent 60%),
+    radial-gradient(90% 120% at 90% 0%, hsl(var(--ih7-hero-grad-2) / 0.15), transparent 50%),
+    radial-gradient(100% 100% at 50% 100%, hsl(var(--ih7-hero-grad-1) / 0.12), transparent 55%);
+}
+.hero-card {
+  border-radius: var(--ih7-radius-lg);
+  box-shadow:
+    0 10px 30px rgba(2, 6, 23, 0.20),
+    0 2px 8px rgba(2, 6, 23, 0.12);
+}
+
+/* Cards */
+.card { border-radius: var(--ih7-radius); }
+.card-hover {
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  border: 1px solid var(--bs-border-color);
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 30px rgba(2, 6, 23, 0.22),
+    0 3px 10px rgba(2, 6, 23, 0.10);
+  border-color: rgba(59, 130, 246, .35);
+}
+.card .card-footer {
+  border-top: 1px dashed var(--bs-border-color);
+  background: transparent;
+}
+
+/* Botões — alta legibilidade */
+.btn { border-radius: 12px; transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease, color .15s ease, border-color .15s ease; }
+.btn:active { transform: translateY(1px); }
+
+/* Botão sólido de contraste (sempre legível) */
+.btn-contrast {
+  color: var(--ih7-contrast-fg);
+  background-color: var(--ih7-contrast-bg);
+  border: 1px solid var(--ih7-contrast-bg);
+  box-shadow: 0 6px 18px var(--ih7-contrast-shadow);
+}
+.btn-contrast:hover,
+.btn-contrast:focus-visible {
+  color: var(--ih7-contrast-fg);
+  background-color: var(--ih7-contrast-bg-hover);
+  border-color: var(--ih7-contrast-bg-hover);
+}
+
+/* Botão contornado adaptável ao tema */
+.btn-outline-contrast {
+  color: var(--ih7-outline-fg);
+  background-color: transparent;
+  border: 1px solid var(--ih7-outline-border);
+}
+.btn-outline-contrast:hover,
+.btn-outline-contrast:focus-visible {
+  color: var(--ih7-outline-fg);
+  background-color: var(--ih7-outline-hover-bg);
+  border-color: var(--ih7-outline-border);
+}
+
+/* Ícone do tema */
+#themeToggle .theme-icon { display: inline-block; text-align: center; }
+
+/* Badges */
+.badge { border-radius: 999px; padding: .55rem .7rem; font-weight: 600; }
+
+/* Utilitário py-md-6 */
+@media (min-width: 768px) {
+  .py-md-3 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  .py-md-6 {
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+  }
+}
+
+/* Tipografia */
+.lead { max-width: 60ch; }
+h1, .display-5, h2, h3 { letter-spacing: .2px; }
+
+/* Rodapé */
+footer .link-secondary:hover { color: var(--ih7-contrast-bg); }
+
+/* Contraste de tons secundários no escuro/claro */
+:root[data-bs-theme="dark"] .text-secondary { color: #94a3b8 !important; }
+:root[data-bs-theme="dark"] .text-body-tertiary { color: #7a8aa0 !important; }
+:root[data-bs-theme="light"] .text-body-tertiary { color: #667085 !important; }
+
+/* Seleção */
+::selection { background: rgba(59, 130, 246, .25); }
+
+/* Stretched link */
+.stretched-link::after { transition: opacity .2s ease; }
+.card-hover:hover .stretched-link::after { opacity: .9; }
+
+/*
+  =========================================================
+  Sobre mim - inicio
+  =======================================================
+*/
+
+/* Gap menor apenas no #sobre em telas grandes */
+@media (min-width: 992px){
+  #sobre .tight-gap-lg{ --bs-gutter-x: 1.25rem; } /* ~20px */
+}
+
+/* Card fixo 300x450 em retrato, cantos arredondados */
+.profile-card-fixed{
+  width: 300px;
+  height: 450px;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid var(--bs-border-color);
+  background: var(--bs-body-bg);
+  position: relative;
+  box-shadow: 0 10px 28px rgba(2,6,23,.12);
+}
+
+/* Fundo: bege no claro / slate no escuro */
+:root[data-bs-theme="light"] .profile-card-fixed{ background: #f3ede6; }
+:root[data-bs-theme="dark"]  .profile-card-fixed{
+  background:
+    radial-gradient(120% 100% at 10% 0%, hsl(var(--ih7-hero-grad-3)/.12), transparent 55%),
+    #0b1220;
+}
+
+/* Conteúdo interno */
+.profile-card-inner{
+  height: 100%;
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Tipografia do card */
+.profile-name{ font-weight: 800; letter-spacing: .2px; }
+.profile-underline{ width: 54px; height: 4px; border-radius: 4px; background: var(--bs-primary); }
+.profile-role{
+  letter-spacing: .18em;
+  font-size: 1rem;
+  color: var(--bs-secondary-color);
+}
+
+/* Títulos */
+.hello-title{
+  font-size: clamp(2.25rem, 4vw + 1rem, 3.25rem);
+  line-height: 1.2;
+}
+
+/* “Henrique” com gradiente */
+.text-gradient{
+  background-image: linear-gradient(-225deg, #a445b2, #d41872 52%, #ff0066);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Responsivo: empilha no mobile; card mantém proporção 2:3 */
+/* <992px: empilha, ocupa 100% e NUNCA passa de 230px de altura */
+@media (max-width: 991.98px){
+  /* card */
+  #sobre .profile-card-fixed{
+    width: 100%;
+    /* cresce com a largura da tela, mas para em 230px */
+    height: clamp(180px, 46vw, 200px);
+    max-height: 200px;         /* redundante, mas garante o teto */
+  }
+
+  /* centraliza o card quando empilha */
+  #sobre .col-lg-5.d-flex{
+    justify-content: center;
+  }
+
+  /* padding e fontes menores para caber bem no card */
+  #sobre .profile-card-inner{ padding: 18px 16px; }
+  /* #sobre .profile-card-fixed .profile-name{ font-size: 1rem; } */
+  /* #sobre .profile-card-fixed .hello-title{
+    font-size: clamp(1.6rem, 4vw + .5rem, 2rem);
+  } */
+  /* #sobre .profile-card-fixed .profile-role{
+    font-size: .85rem;
+    letter-spacing: .16em;
+  } */
+}
+
+/*
+  =========================================================
+  Sobre mim - fim
+  =======================================================
+*/
