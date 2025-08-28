@@ -1,0 +1,35 @@
+{
+   "usuario": {
+      "id": 10293,
+      "nome": "João",
+      "email": "joao.silva@io.com",
+      "cpf": "123.456.789-00"
+   },
+   "permissao": {
+      "status": false,
+      "nivel": "restrito",
+      "expira_em": "2025-12-31T23:59:59Z"
+   },
+   "configuracoes": {
+      "tema": "dark",
+      "notificacoes": true,
+      "idioma": "pt-BR"
+   },
+   "logs": [
+      {
+      "data": "2025-08-28T10:15:00Z",
+      "acao": "tentativa_login",
+      "resultado": "falhou"
+      },
+      {
+      "data": "2025-08-28T10:20:00Z",
+      "acao": "verificacao_permissao",
+      "resultado": "bloqueado"
+      }
+   ],
+   "metadados": {
+      "ip": "192.168.0.101",
+      "navegador": "Chrome 139.0",
+      "sistema": "Windows 10"
+   }
+}
