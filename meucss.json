@@ -6,7 +6,7 @@
       "cpf": "123.456.789-00"
    },
    "permissao": {
-      "status": false,
+      "status": true,
       "nivel": "restrito",
       "expira_em": "2025-12-31T23:59:59Z"
    },
@@ -33,3 +33,4 @@
       "sistema": "Windows 10"
    }
 }
+
